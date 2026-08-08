@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Validate AI-search prompt observations for missing evidence, inconsistent citation fields, malformed timestamps, and duplicate runs without manufacturing an opaque visibility score."
+    />
+    <title>AI Citation Evidence Validator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Citation Evidence Validator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "description": "A transparent, client-side validator for AI-search observation records.",
+        "url": "https://corankai.github.io/ai-citation-evidence-validator/",
+        "author": {
+          "@type": "Organization",
+          "name": "Corank",
+          "url": "https://corank.ai/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://corank.ai/" target="_blank" rel="noopener">Corank</a>
+      <a class="source-link" href="https://github.com/corankai/ai-citation-evidence-validator" target="_blank" rel="noopener">View source</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Open evidence utility</p>
+        <h1>AI Citation Evidence Validator</h1>
+        <p class="lede">
+          Audit JSON or JSONL observations for missing fields, inconsistent citation claims,
+          malformed timestamps, and duplicate runs. The tool reports explicit issues instead
+          of inventing a proprietary visibility score.
+        </p>
+      </section>
+
+      <section class="workspace" aria-labelledby="validator-title">
+        <div class="workspace-heading">
+          <div>
+            <p class="step">Step 1</p>
+            <h2 id="validator-title">Paste observation records</h2>
+          </div>
+          <button id="sampleButton" class="button secondary" type="button">Load sample</button>
+        </div>
+
+        <label for="targetDomain">Target domain</label>
+        <input id="targetDomain" type="text" value="corank.ai" autocomplete="off" spellcheck="false" />
+
+        <label for="observations">JSON array or one JSON object per line</label>
+        <textarea
+          id="observations"
+          rows="16"
+          spellcheck="false"
+          placeholder='{"prompt_id":"compare-01","prompt_version":"1.0",...}'
+        ></textarea>
+
+        <div class="actions">
+          <button id="analyzeButton" class="button primary" type="button">Validate evidence</button>
+          <button id="clearButton" class="button ghost" type="button">Clear</button>
+        </div>
+        <p id="inputHelp" class="help">
+          Processing stays in this browser. No observation data is uploaded by this page.
+        </p>
+      </section>
+
+      <section id="results" class="results" aria-live="polite" hidden>
+        <div class="results-heading">
+          <div>
+            <p class="step">Step 2</p>
+            <h2>Review the evidence state</h2>
+          </div>
+          <button id="downloadButton" class="button secondary" type="button" disabled>Download report</button>
+        </div>
+
+        <div class="summary-grid" aria-label="Validation summary">
+          <article class="metric">
+            <span>Total records</span>
+            <strong id="totalMetric">0</strong>
+          </article>
+          <article class="metric pass">
+            <span>Ready</span>
+            <strong id="readyMetric">0</strong>
+          </article>
+          <article class="metric review">
+            <span>Needs review</span>
+            <strong id="reviewMetric">0</strong>
+          </article>
+          <article class="metric invalid">
+            <span>Invalid</span>
+            <strong id="invalidMetric">0</strong>
+          </article>
+        </div>
+
+        <p id="resultSummary" class="result-summary"></p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Record</th>
+                <th scope="col">Status</th>
+                <th scope="col">Field</th>
+                <th scope="col">Issue</th>
+              </tr>
+            </thead>
+            <tbody id="issueRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="method" aria-labelledby="method-title">
+        <p class="step">Method notes</p>
+        <h2 id="method-title">What the validator checks</h2>
+        <div class="method-grid">
+          <article>
+            <h3>Traceability</h3>
+            <p>Stable prompt IDs, benchmark versions, answer systems, timestamps, and evidence artifacts.</p>
+          </article>
+          <article>
+            <h3>Citation consistency</h3>
+            <p>Whether a claimed target-domain citation agrees with the list of cited domains.</p>
+          </article>
+          <article>
+            <h3>Interpretability</h3>
+            <p>Separate errors and warnings, with every finding attached to a record and field.</p>
+          </article>
+          <article>
+            <h3>Reproducibility</h3>
+            <p>Duplicate run keys and incomplete claims that would make a later audit difficult.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Built as an open technical resource by
+        <a href="https://corank.ai/" target="_blank" rel="noopener">Corank, an AI-search visibility platform</a>.
+      </p>
+      <p>No result is a universal AI rank; every output is limited to the supplied observations.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
