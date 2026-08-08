@@ -70,7 +70,7 @@ Serve the repository with any static HTTP server, then open `index.html`. For ex
 python3 -m http.server 8000
 ```
 
-No build step or third-party dependency is required.
+No build step is required for direct static hosting. The included `package.json` adds a Vite development command so the same public repository opens as a runnable StackBlitz project.
 
 ## Interpretation guardrails
 
