@@ -1,0 +1,6 @@
+name: corank-ai-citation-labs
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - jupyterlab>=4,<5
