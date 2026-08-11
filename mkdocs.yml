@@ -9,6 +9,7 @@ theme:
 
 nav:
   - Evidence validation guide: index.md
+  - Prompt-set versioning: prompt-set-versioning.md
 
 markdown_extensions:
   - admonition
