@@ -1,0 +1,15 @@
+site_name: Corank AI Citation Evidence Validator
+site_description: Technical documentation for validating AEO and GEO observation records
+site_url: https://corank-ai-citation-evidence-validator.readthedocs.io/
+repo_url: https://github.com/corankai/ai-citation-evidence-validator
+repo_name: corankai/ai-citation-evidence-validator
+
+theme:
+  name: readthedocs
+
+nav:
+  - Evidence validation guide: index.md
+
+markdown_extensions:
+  - admonition
+  - tables
